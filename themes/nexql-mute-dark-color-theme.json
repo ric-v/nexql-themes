@@ -468,7 +468,7 @@
       }
     },
     {
-      "name": "Keywords (quiet tier)",
+      "name": "Keywords",
       "scope": [
         "keyword",
         "keyword.package",
@@ -483,7 +483,7 @@
         "storage.modifier"
       ],
       "settings": {
-        "foreground": "#8E8FB8"
+        "foreground": "#BC94D6"
       }
     },
     {
@@ -494,7 +494,7 @@
         "punctuation"
       ],
       "settings": {
-        "foreground": "#8E8FB8"
+        "foreground": "#94A8EE"
       }
     },
     {
@@ -506,7 +506,7 @@
         "meta.function-call"
       ],
       "settings": {
-        "foreground": "#7AA8E8"
+        "foreground": "#94A8EE"
       }
     },
     {
@@ -517,7 +517,7 @@
         "support.type.sql"
       ],
       "settings": {
-        "foreground": "#B68CDB"
+        "foreground": "#A67BD4"
       }
     },
     {
@@ -535,6 +535,7 @@
       "scope": [
         "variable",
         "variable.other",
+        "variable.other.object",
         "variable.parameter",
         "variable.parameter.sql",
         "variable.other.sql",
@@ -547,6 +548,28 @@
       }
     },
     {
+      "name": "Properties and object keys",
+      "scope": [
+        "variable.other.property",
+        "variable.other.object.property",
+        "variable.object.property",
+        "meta.property-name",
+        "meta.object-literal.key",
+        "meta.object-literal.key.js",
+        "meta.object-literal.key.jsx",
+        "meta.object-literal.key.ts",
+        "meta.object-literal.key.tsx",
+        "meta.definition.property",
+        "support.type.property-name",
+        "support.type.property-name.json",
+        "support.type.property-name.ts",
+        "support.type.property-name.tsx"
+      ],
+      "settings": {
+        "foreground": "#C9A8E8"
+      }
+    },
+    {
       "name": "Strings",
       "scope": [
         "string",
@@ -554,7 +577,7 @@
         "string.quoted.double.sql"
       ],
       "settings": {
-        "foreground": "#D9A86C"
+        "foreground": "#E08858"
       }
     },
     {
@@ -564,7 +587,7 @@
         "constant.language"
       ],
       "settings": {
-        "foreground": "#D9A86C"
+        "foreground": "#E8A44E"
       }
     },
     {
@@ -574,7 +597,7 @@
         "support.constant"
       ],
       "settings": {
-        "foreground": "#D9A86C"
+        "foreground": "#E8A44E"
       }
     },
     {
@@ -583,7 +606,7 @@
         "entity.name.tag"
       ],
       "settings": {
-        "foreground": "#7AA8E8"
+        "foreground": "#94A8EE"
       }
     },
     {
@@ -592,16 +615,7 @@
         "entity.other.attribute-name"
       ],
       "settings": {
-        "foreground": "#B68CDB"
-      }
-    },
-    {
-      "name": "JSON keys",
-      "scope": [
-        "support.type.property-name.json"
-      ],
-      "settings": {
-        "foreground": "#B68CDB"
+        "foreground": "#A67BD4"
       }
     },
     {
@@ -611,7 +625,7 @@
         "entity.name.section"
       ],
       "settings": {
-        "foreground": "#7AA8E8",
+        "foreground": "#94A8EE",
         "fontStyle": "bold"
       }
     },
@@ -640,7 +654,7 @@
         "markup.fenced_code.block"
       ],
       "settings": {
-        "foreground": "#D9A86C"
+        "foreground": "#E08858"
       }
     },
     {
@@ -676,7 +690,7 @@
         "markup.changed"
       ],
       "settings": {
-        "foreground": "#7AA8E8"
+        "foreground": "#94A8EE"
       }
     },
     {
@@ -693,28 +707,32 @@
   ],
   "semanticTokenColors": {
     "keyword": {
-      "foreground": "#8E8FB8"
+      "foreground": "#BC94D6"
     },
-    "function": "#7AA8E8",
-    "method": "#7AA8E8",
-    "class": "#B68CDB",
-    "type": "#B68CDB",
-    "struct": "#B68CDB",
-    "interface": "#B68CDB",
-    "enum": "#B68CDB",
-    "enumMember": "#D9A86C",
+    "function": "#94A8EE",
+    "method": "#94A8EE",
+    "class": "#A67BD4",
+    "type": "#A67BD4",
+    "struct": "#A67BD4",
+    "interface": "#A67BD4",
+    "enum": "#A67BD4",
+    "enumMember": "#E8A44E",
     "namespace": "#D8D6E0",
     "parameter": "#D8D6E0",
     "variable": "#D8D6E0",
-    "property": "#D8D6E0",
-    "string": "#D9A86C",
-    "number": "#D9A86C",
+    "property": "#C9A8E8",
+    "member": "#C9A8E8",
+    "property.declaration": "#C9A8E8",
+    "property.readonly": "#C9A8E8",
+    "string": "#E08858",
+    "number": "#E8A44E",
     "comment": {
       "foreground": "#6B6A7E",
       "italic": true
     },
-    "operator": "#8E8FB8",
-    "decorator": "#B68CDB",
-    "macro": "#7AA8E8"
+    "operator": "#94A8EE",
+    "decorator": "#A67BD4",
+    "macro": "#94A8EE",
+    "variable.readonly": "#E8A44E"
   }
 }

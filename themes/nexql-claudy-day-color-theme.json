@@ -562,12 +562,22 @@
       }
     },
     {
-      "name": "Properties",
+      "name": "Properties and object keys",
       "scope": [
         "variable.other.property",
+        "variable.other.object.property",
+        "variable.object.property",
         "meta.property-name",
+        "meta.object-literal.key",
+        "meta.object-literal.key.js",
+        "meta.object-literal.key.jsx",
+        "meta.object-literal.key.ts",
+        "meta.object-literal.key.tsx",
+        "meta.definition.property",
         "support.type.property-name",
         "support.type.property-name.json",
+        "support.type.property-name.ts",
+        "support.type.property-name.tsx",
         "meta.column.sql",
         "variable.other.column.sql"
       ],
@@ -580,6 +590,7 @@
       "scope": [
         "variable",
         "variable.other",
+        "variable.other.object",
         "variable.other.sql",
         "support.variable"
       ],
@@ -806,6 +817,8 @@
     "regexp": "#B07C26",
     "boolean": "#946A1E",
     "variable.readonly": "#BD5341",
-    "property.readonly": "#BD5341"
+    "property.readonly": "#3A6594",
+    "member": "#3A6594",
+    "property.declaration": "#3A6594"
   }
 }

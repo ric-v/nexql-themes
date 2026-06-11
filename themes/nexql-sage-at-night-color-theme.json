@@ -535,6 +535,7 @@
       "scope": [
         "variable",
         "variable.other",
+        "variable.other.object",
         "variable.parameter",
         "variable.parameter.sql",
         "variable.other.sql",
@@ -596,9 +597,22 @@
       }
     },
     {
-      "name": "JSON keys",
+      "name": "Properties and object keys",
       "scope": [
-        "support.type.property-name.json"
+        "variable.other.property",
+        "variable.other.object.property",
+        "variable.object.property",
+        "meta.property-name",
+        "meta.object-literal.key",
+        "meta.object-literal.key.js",
+        "meta.object-literal.key.jsx",
+        "meta.object-literal.key.ts",
+        "meta.object-literal.key.tsx",
+        "meta.definition.property",
+        "support.type.property-name",
+        "support.type.property-name.json",
+        "support.type.property-name.ts",
+        "support.type.property-name.tsx"
       ],
       "settings": {
         "foreground": "#A78BFA"
@@ -706,7 +720,7 @@
     "namespace": "#E4E8E2",
     "parameter": "#E4E8E2",
     "variable": "#E4E8E2",
-    "property": "#E4E8E2",
+    "property": "#A78BFA",
     "string": "#D4A853",
     "number": "#E6B84A",
     "comment": {
@@ -715,6 +729,10 @@
     },
     "operator": "#9CB098",
     "decorator": "#A78BFA",
-    "macro": "#4EC9B0"
+    "macro": "#4EC9B0",
+    "member": "#A78BFA",
+    "property.declaration": "#A78BFA",
+    "property.readonly": "#A78BFA",
+    "variable.readonly": "#E6B84A"
   }
 }

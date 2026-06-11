@@ -564,19 +564,29 @@
       }
     },
     {
-      "name": "Columns and properties",
+      "name": "Properties and object keys",
       "scope": [
         "variable.other.property",
+        "variable.other.object.property",
+        "variable.object.property",
         "meta.property-name",
+        "meta.object-literal.key",
+        "meta.object-literal.key.js",
+        "meta.object-literal.key.jsx",
+        "meta.object-literal.key.ts",
+        "meta.object-literal.key.tsx",
+        "meta.definition.property",
         "support.type.property-name",
         "support.type.property-name.json",
+        "support.type.property-name.ts",
+        "support.type.property-name.tsx",
         "meta.column.sql",
         "variable.other.column.sql",
         "entity.name.column",
         "entity.name.column.sql"
       ],
       "settings": {
-        "foreground": "#1A2B3D"
+        "foreground": "#4A6278"
       }
     },
     {
@@ -584,6 +594,7 @@
       "scope": [
         "variable",
         "variable.other",
+        "variable.other.object",
         "variable.other.sql",
         "support.variable",
         "variable.alias"
@@ -795,7 +806,7 @@
     },
     "parameter": "#4A6278",
     "variable": "#1A2B3D",
-    "property": "#1A2B3D",
+    "property": "#4A6278",
     "string": "#B8861A",
     "number": "#A67A18",
     "comment": {
@@ -811,6 +822,8 @@
     "regexp": "#A67A18",
     "boolean": "#A67A18",
     "variable.readonly": "#996E12",
-    "property.readonly": "#996E12"
+    "property.readonly": "#4A6278",
+    "member": "#4A6278",
+    "property.declaration": "#4A6278"
   }
 }
