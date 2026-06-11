@@ -2,8 +2,8 @@ name: Publish Extension
 
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - main
 
 permissions:
   contents: write
@@ -13,70 +13,86 @@ env:
 
 jobs:
   publish:
-    if: github.ref_type == 'tag' && startsWith(github.ref_name, 'v')
+    # PR merges land as push to main on the upstream repo; tags from forks are not transferred.
+    if: github.event.repository.fork == false
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-          ref: ${{ github.ref }}
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Verify tag matches package.json
+      - name: Detect version bump
         id: version
-        env:
-          TAG_NAME: ${{ github.ref_name }}
         run: |
           set -euo pipefail
 
-          TAG_VERSION=${TAG_NAME#v}
-          PKG_VERSION=$(node -p "require('./package.json').version")
+          CURRENT=$(node -p "require('./package.json').version")
           EXTENSION_NAME=$(node -p "require('./package.json').name")
 
-          echo "Tag: $TAG_NAME"
-          echo "Tag version: $TAG_VERSION"
-          echo "Package.json version: $PKG_VERSION"
+          echo "current=$CURRENT" >> "$GITHUB_OUTPUT"
+          echo "vsix_file=${EXTENSION_NAME}-${CURRENT}.vsix" >> "$GITHUB_OUTPUT"
+          echo "tag_name=v${CURRENT}" >> "$GITHUB_OUTPUT"
 
-          if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
-            echo "::error::Tag version ($TAG_VERSION) doesn't match package.json version ($PKG_VERSION)"
-            exit 1
+          if git rev-parse "refs/tags/v${CURRENT}" >/dev/null 2>&1; then
+            echo "skip=true" >> "$GITHUB_OUTPUT"
+            echo "Tag v${CURRENT} already exists — skipping publish."
+            exit 0
           fi
 
-          echo "current=$PKG_VERSION" >> "$GITHUB_OUTPUT"
-          echo "vsix_file=${EXTENSION_NAME}-${PKG_VERSION}.vsix" >> "$GITHUB_OUTPUT"
+          if git rev-parse HEAD~1 >/dev/null 2>&1; then
+            PREVIOUS=$(git show HEAD~1:package.json | node -p "JSON.parse(require('fs').readFileSync(0,'utf8')).version")
+            if [ "$CURRENT" = "$PREVIOUS" ]; then
+              echo "skip=true" >> "$GITHUB_OUTPUT"
+              echo "package.json version unchanged ($CURRENT) — skipping publish."
+              exit 0
+            fi
+            echo "Version bumped: ${PREVIOUS} → ${CURRENT}"
+          else
+            echo "First commit on main — publishing ${CURRENT}."
+          fi
+
+          echo "skip=false" >> "$GITHUB_OUTPUT"
 
       - name: Build
+        if: steps.version.outputs.skip != 'true'
         run: npm run vscode:prepublish
 
       - name: Package extension
+        if: steps.version.outputs.skip != 'true'
         run: npx -y "@vscode/vsce@${VSCE_VERSION}" package
 
       - name: Upload VSIX artifact
+        if: steps.version.outputs.skip != 'true'
         uses: actions/upload-artifact@v4
         with:
-          name: extension
+          name: extension-${{ steps.version.outputs.current }}
           path: '*.vsix'
           retention-days: 90
 
       - name: Publish to VS Code Marketplace
+        if: steps.version.outputs.skip != 'true'
         run: |
           npx -y "@vscode/vsce@${VSCE_VERSION}" publish \
             --packagePath "${{ steps.version.outputs.vsix_file }}" \
             -p "${{ secrets.VSCE_PAT }}"
 
       - name: Publish to Open VSX Registry
+        if: steps.version.outputs.skip != 'true'
         run: |
           npx -y ovsx publish "${{ steps.version.outputs.vsix_file }}" \
             -p "${{ secrets.OVSX_PAT }}"
 
       - name: Create GitHub Release
+        if: steps.version.outputs.skip != 'true'
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
+          tag_name: ${{ steps.version.outputs.tag_name }}
+          name: ${{ steps.version.outputs.tag_name }}
           files: '*.vsix'
           draft: false
           prerelease: false
