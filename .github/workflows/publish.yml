@@ -1,0 +1,79 @@
+name: Publish Extension
+
+on:
+  push:
+    tags:
+      - 'v*'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+env:
+  VSCE_VERSION: '2.24.0'
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Verify tag matches package.json
+        id: version
+        run: |
+          set -euo pipefail
+
+          TAG_VERSION=${GITHUB_REF_NAME#v}
+          PKG_VERSION=$(node -p "require('./package.json').version")
+          EXTENSION_NAME=$(node -p "require('./package.json').name")
+
+          echo "Tag version: $TAG_VERSION"
+          echo "Package.json version: $PKG_VERSION"
+
+          if [ "$TAG_VERSION" != "$PKG_VERSION" ]; then
+            echo "::error::Tag version ($TAG_VERSION) doesn't match package.json version ($PKG_VERSION)"
+            exit 1
+          fi
+
+          echo "current=$PKG_VERSION" >> "$GITHUB_OUTPUT"
+          echo "vsix_file=${EXTENSION_NAME}-${PKG_VERSION}.vsix" >> "$GITHUB_OUTPUT"
+
+      - name: Build
+        run: npm run vscode:prepublish
+
+      - name: Package extension
+        run: npx -y "@vscode/vsce@${VSCE_VERSION}" package
+
+      - name: Upload VSIX artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: extension
+          path: '*.vsix'
+          retention-days: 90
+
+      - name: Publish to VS Code Marketplace
+        run: |
+          npx -y "@vscode/vsce@${VSCE_VERSION}" publish \
+            --packagePath "${{ steps.version.outputs.vsix_file }}" \
+            -p "${{ secrets.VSCE_PAT }}"
+
+      - name: Publish to Open VSX Registry
+        run: |
+          npx -y ovsx publish "${{ steps.version.outputs.vsix_file }}" \
+            -p "${{ secrets.OVSX_PAT }}"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: '*.vsix'
+          draft: false
+          prerelease: false
+          generate_release_notes: true
