@@ -35,7 +35,7 @@ The logo — a glowing **N** woven from fiber-optic strands over a dark IDE canv
 | **Spectrum in code only** | The ribbon runs through the editor: cool structure (keywords, functions) → warm data (strings, numbers). Chrome stays calm; color lives in tokens. |
 | **One reserved accent** | Magenta (`#E85FBF`) is **errors only** — never reused for strings, types, or UI chrome. One unmistakable signal for "something is wrong." |
 | **Frequency ∝ inverse saturation** | The more often a token appears, the quieter its color. Rare constructs (types, errors) may be brighter or more saturated. |
-| **Scenario-anchored variants** | Each theme answers a real context — daily dark (`Mute`), OLED black, long-session warmth (`Ember`), cool fog (`Drift`), light parchment (`Break of Dawn`), Postgres homage, sage pair — without breaking the shared rules above. |
+| **Scenario-anchored variants** | Each theme answers a real context — cool navy (`Mute`), OLED black, long-session warmth (`Ember`), warm daily dark (`Drift`), light parchment (`Break of Dawn`), Postgres homage, sage pair — without breaking the shared rules above. |
 
 ### Token tiers (flagship dark reference)
 
@@ -54,10 +54,10 @@ Applies to **NexQL Mute Dark** and close dark variants; light themes remap the s
 
 | Theme | Type | Notes |
 | --- | --- | --- |
-| NexQL Mute Dark | dark | Flagship daily driver — warm near-black chrome, indigo UI accent (`#8A8CFF`) |
-| NexQL OLED Dark | dark | True-black AMOLED variant |
+| NexQL Mute Dark | dark | Deep navy with muted indigo keywords, soft pink functions, peach strings |
+| NexQL OLED Dark | dark | Drift palette on true-black AMOLED surfaces |
 | NexQL Ember Dark | dark | Warmer, higher-contrast dark for long sessions |
-| NexQL Drift Dark | dark | Cool, low-chroma fog-bank dark |
+| NexQL Drift Dark | dark | Warm near-black daily driver — indigo UI accent, quiet syntax spectrum |
 | NexQL Break of Dawn | light | Solar-powered light with warm parchment surfaces |
 | NexQL Claudy Day | light | Claude Code–inspired warm parchment |
 | NexQL Claudy Night | dark | Ink-dark counterpart to Claudy Day |
