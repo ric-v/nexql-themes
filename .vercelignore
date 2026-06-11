@@ -1,0 +1,9 @@
+node_modules
+graphify-out
+*.vsix
+pat
+pat-open-vsx
+Release.md
+NexQL Site (standalone).html
+.claude
+.cursor

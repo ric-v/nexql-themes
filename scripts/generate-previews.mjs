@@ -35,7 +35,7 @@ async function main() {
   ]);
   const existing = await readdir(themesDir);
   for (const file of existing) {
-    if (file.endsWith(".json") && !expectedFiles.has(file)) {
+    if (file.endsWith(".json") && file !== "manifest.json" && !expectedFiles.has(file)) {
       await rm(path.join(themesDir, file));
     }
   }

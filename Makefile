@@ -1,4 +1,4 @@
-.PHONY: all clean install build validate package package-dry-run watch debug open git-tag publish publish-vsx publish-ovsx help
+.PHONY: all clean install build validate package package-dry-run watch debug open git-tag publish publish-vsx publish-ovsx site build-site help
 
 # Variables
 NODE_BIN := node
@@ -6,6 +6,9 @@ NPM_BIN := npm
 VSCE_CMD := npx -y @vscode/vsce@2.24.0
 OVSX_CMD := npx -y ovsx
 VSCODE ?= code
+SITE_PORT ?= 3000
+SITE_DIR := site
+SERVE_CONFIG := serve.json
 
 EXTENSION_NAME := $(shell $(NODE_BIN) -p "require('./package.json').name")
 EXTENSION_VERSION := $(shell $(NODE_BIN) -p "require('./package.json').version")
@@ -33,6 +36,8 @@ help:
 		'  debug           Launch Extension Development Host via CLI' \
 		'  open            Open the workspace in VS Code' \
 		'  git-tag         Interactive semver bump, commit, and push (CI publishes on upstream merge)' \
+		'  site            Build marketing site and serve locally (SITE_PORT=$(SITE_PORT))' \
+		'  build-site      Generate themes/manifest.json and site assets' \
 		'' \
 		'Development:' \
 		'  Press F5 in VS Code ("Run Extension") to test without packaging.'
@@ -78,6 +83,12 @@ debug:
 
 open:
 	$(VSCODE) --new-window "$(PWD)"
+
+build-site:
+	$(NPM_BIN) run build:site
+
+site: build-site
+	npx --yes serve . -l $(SITE_PORT) -c $(SERVE_CONFIG)
 
 # Git tag and version bump (interactive)
 git-tag:

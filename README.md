@@ -5,6 +5,11 @@
   <img src="nexql-theme-logo.png" alt="NexQL Themes logo" width="256" />
 </p>
 
+<p align="center">
+  <strong><a href="https://nexql-themes.astrx.dev/">Preview NexQL Themes live</a></strong>
+  <strong><a href="https://nexql.astrx.dev/">••• NexQL DB Extension for VS Code</a></strong>
+</p>
+
 **NexQL Themes** — a VS Code color-theme family for database work and everyday coding. Eleven scenario-anchored variants (dark, light, OLED, homage) share one design language: quiet keywords, a disciplined cool→warm syntax spectrum, and a single reserved accent for errors.
 
 Install from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=ric-v.nexql-themes) or [Open VSX](https://open-vsx.org/extension/ric-v/nexql-themes), then `Preferences: Color Theme` → pick any **NexQL** theme.
@@ -60,74 +65,6 @@ Applies to **NexQL Mute Dark** and close dark variants; light themes remap the s
 | NexQL Postgres Homage Day | light | Light Postgres homage |
 | NexQL Sage Day | light | Sage-green light pair |
 | NexQL Sage at Night | dark | Sage-tinted dark counterpart |
-<!-- 
-## Screenshots
-
-**NexQL Sage Day** across nine languages (`showcase.md` sample file).
-
-<p align="center">
-<table>
-  <tr>
-    <td align="center"><img src="screenshots/sage/typescript.png" alt="TypeScript" width="280"/><br/><sub>TypeScript</sub></td>
-    <td align="center"><img src="screenshots/sage/python.png" alt="Python" width="280"/><br/><sub>Python</sub></td>
-    <td align="center"><img src="screenshots/sage/rust.png" alt="Rust" width="280"/><br/><sub>Rust</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="screenshots/sage/go.png" alt="Go" width="280"/><br/><sub>Go</sub></td>
-    <td align="center"><img src="screenshots/sage/java.png" alt="Java" width="280"/><br/><sub>Java</sub></td>
-    <td align="center"><img src="screenshots/sage/cpp.png" alt="C++" width="280"/><br/><sub>C++</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="screenshots/sage/c.png" alt="C" width="280"/><br/><sub>C</sub></td>
-    <td align="center"><img src="screenshots/sage/html.png" alt="HTML" width="280"/><br/><sub>HTML</sub></td>
-    <td align="center"><img src="screenshots/sage/bash.png" alt="Bash" width="280"/><br/><sub>Bash</sub></td>
-  </tr>
-</table>
-</p>
-
-**NexQL Claudy Day** — same `showcase.md` sample across nine languages.
-
-<p align="center">
-<table>
-  <tr>
-    <td align="center"><img src="screenshots/claudy-day/typescript.png" alt="TypeScript" width="280"/><br/><sub>TypeScript</sub></td>
-    <td align="center"><img src="screenshots/claudy-day/python.png" alt="Python" width="280"/><br/><sub>Python</sub></td>
-    <td align="center"><img src="screenshots/claudy-day/rust.png" alt="Rust" width="280"/><br/><sub>Rust</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="screenshots/claudy-day/go.png" alt="Go" width="280"/><br/><sub>Go</sub></td>
-    <td align="center"><img src="screenshots/claudy-day/java.png" alt="Java" width="280"/><br/><sub>Java</sub></td>
-    <td align="center"><img src="screenshots/claudy-day/cpp.png" alt="C++" width="280"/><br/><sub>C++</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="screenshots/claudy-day/c.png" alt="C" width="280"/><br/><sub>C</sub></td>
-    <td align="center"><img src="screenshots/claudy-day/html.png" alt="HTML" width="280"/><br/><sub>HTML</sub></td>
-    <td align="center"><img src="screenshots/claudy-day/bash.png" alt="Bash" width="280"/><br/><sub>Bash</sub></td>
-  </tr>
-</table>
-</p>
-
-**NexQL Break of Dawn** — same `showcase.md` sample across nine languages.
-
-<p align="center">
-<table>
-  <tr>
-    <td align="center"><img src="screenshots/break-of-dawn/typescript.png" alt="TypeScript" width="280"/><br/><sub>TypeScript</sub></td>
-    <td align="center"><img src="screenshots/break-of-dawn/python.png" alt="Python" width="280"/><br/><sub>Python</sub></td>
-    <td align="center"><img src="screenshots/break-of-dawn/rust.png" alt="Rust" width="280"/><br/><sub>Rust</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="screenshots/break-of-dawn/go.png" alt="Go" width="280"/><br/><sub>Go</sub></td>
-    <td align="center"><img src="screenshots/break-of-dawn/java.png" alt="Java" width="280"/><br/><sub>Java</sub></td>
-    <td align="center"><img src="screenshots/break-of-dawn/cpp.png" alt="C++" width="280"/><br/><sub>C++</sub></td>
-  </tr>
-  <tr>
-    <td align="center"><img src="screenshots/break-of-dawn/c.png" alt="C" width="280"/><br/><sub>C</sub></td>
-    <td align="center"><img src="screenshots/break-of-dawn/html.png" alt="HTML" width="280"/><br/><sub>HTML</sub></td>
-    <td align="center"><img src="screenshots/break-of-dawn/bash.png" alt="Bash" width="280"/><br/><sub>Bash</sub></td>
-  </tr>
-</table>
-</p> -->
 
 ## Development
 
