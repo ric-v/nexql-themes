@@ -2,7 +2,7 @@
   "name": "nexql-themes",
   "displayName": "NexQL Themes",
   "description": "NexQL theme family — scenario-anchored variants (quiet keywords, disciplined spectrum, one reserved accent).",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "ric-v",
   "repository": {
     "type": "git",
